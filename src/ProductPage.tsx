@@ -6,7 +6,7 @@ import { IProduct } from "./interfaces/IProduct";
 import { navigateToUrl } from "single-spa";
 
 const ProductPage = (): React.JSX.Element => {
-  const [id, setId] = useState<string>("");
+  const [id, setId] = useState<string | undefined>("");
   const [product, setProduct] = useState<IProduct>({} as IProduct);
 
   useEffect(() => {
