@@ -31,27 +31,44 @@ const ProductPage = (): React.JSX.Element => {
   return (
     <>
       {product.id !== 0 ? (
-        <>
+        <main className="p-4 flex flex-col gap-2">
           <nav>
-            <button type="button" onClick={() => navigateToUrl("/")}>
+            <button
+              type="button"
+              className="border-b-2 hover:cursor-pointer hover:text-primaryContrast"
+              onClick={() => navigateToUrl("/")}
+            >
               Go back
             </button>
           </nav>
-          <main key={product.id}>
-            <h2>{product.title}</h2>
-            <picture>
+          <section
+            key={product.id}
+            className="self-center flex flex-col p-10 shadow-inner rounded-md"
+          >
+            <div className="flex  justify-between items-baseline mb-6">
+              <h2 className="text-xl text-title">{product.title}</h2>
+              <h4 className="text-secondaryContrast">${product.price}</h4>
+            </div>
+
+            <picture className="shadow-lg">
               <img src={product.thumbnail} alt={product.description} />
             </picture>
-            <div>
-              <h4>$ {product.price}</h4>
+            <div className="flex justify-between mt-4">
+              <p>
+                category:{" "}
+                <span className="text-primaryContrast">{product.category}</span>
+              </p>
+              <p>
+                brand:{" "}
+                <span className="text-primaryContrast">{product.brand}</span>
+              </p>
+              <p>
+                in stock:{" "}
+                <span className="text-primaryContrast">{product.stock}</span>
+              </p>
             </div>
-            <div className="flex">
-              <p>category: {product.category}</p>
-              <p>brand: {product.brand}</p>
-              <p>in stock: {product.stock}</p>
-            </div>
-          </main>
-        </>
+          </section>
+        </main>
       ) : (
         <h1>Prodcut Not Found</h1>
       )}
