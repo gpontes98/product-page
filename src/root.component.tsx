@@ -1,3 +1,15 @@
-export default function Root(props) {
-  return <section>{props.name} is mounted!</section>;
-}
+import { QueryClientProvider } from "@tanstack/react-query";
+// @ts-ignore
+import { queryClient } from "@hbler/api";
+
+import ProductPage from "./ProductPage";
+
+const Root = (): React.JSX.Element => {
+	return (
+		<QueryClientProvider client={queryClient}>
+			<ProductPage />
+		</QueryClientProvider>
+	);
+};
+
+export default Root
